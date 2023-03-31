@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} L´Erotics {% endblock %}
+{% block content %}
+<div class="embed-responsive embed-responsive-16by9">
+    <h1> {{ get_video }}</h1>
+    <video controls preload="auto" width="900" height="600">
+        <source src="https://fotosvideos.loophole.site/videos/{{ get_video }}" type="video/mp4">
+    </video>
+
+
+</div>
+{% endblock %}

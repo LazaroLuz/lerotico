@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} L´Erotics {% endblock %}
+{% block content %}
+
+<div class="conteiner">
+    <form action="{{ url_for('views.upload') }}" enctype="multipart/form-data" method="post">
+            <input type="file" name="movie" id="movie">
+
+            <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+    <div class="cn-container">
+        <div class="cn-firstcolumn">
+            <main>
+                <section>
+                    <div class="cn-list">
+                        {% for video in users %}
+                        {% if '.jpg' in video %}
+                            <article>
+                                <div class="border">
+                                    <figure>
+                                        <a href="{{ url_for('views.assistir', q=video) }}">
+                                            <img width="280" height="390" src="https://fotosvideos.loophole.site/images/{{ video }}">
+                                        </a>
+                                    </figure>
+                                    <header>
+                                        <a href="{{ url_for('views.assistir', q=video) }}">
+                                            <h4>{{ video.replace('.jpg', '') }}</h4>
+                                        </a>
+                                    </header>
+                                </div>
+                            </article>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</div>
+{{ pagination.links }}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %} L´Erotics {% endblock %}
+
+{% block search_results %}
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+{% endblock %}
+{% block content %}
+{{ pagination.info }}
+{{ pagination.links }}
+<div class="cn-container">
+    <div class="cn-firstcolumn">
+        <main>
+            <section>
+                <div class="cn-list">
+                    {% for imagem in users %}
+                        <article>
+                            <div class="border">
+                                <figure>
+                                    <a href="{{ url_for('views.photos', id=imagem.comic.id) }}" target="_blank" title="{{ imagem.comic.name }}">
+                                        <img width="260" height="360" src="{{ imagem.urls }}" alt="{{ imagem.comic.name }}" itemprop="image">
+                                        <span class="cn-mask"></span>
+                                    </a>
+                                </figure>
+                                <header>
+                                    <a href="{{ url_for('views.photos', id=imagem.comic.id) }}" target="_blank" title="{{ imagem.comic.name }}">
+                                        <h4>{{ imagem.comic.name }} </h4>
+                                    </a>
+                                </header>
+                            </div>
+                        </article>
+
+                    {% endfor %}
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+{{ pagination.links }}
+{% endblock %}
